@@ -34,3 +34,4 @@ Fri Jun 28 12:31:48 +03 2019
 Fri Jun 28 12:31:48 +03 2019
 Fri Jun 28 12:31:48 +03 2019
 Fri Jun 28 12:31:48 +03 2019
+354 Enter mail, end with "." on a line by itself
