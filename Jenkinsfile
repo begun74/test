@@ -1,7 +1,7 @@
 pipeline { 
     agent any 
     stages {
-       }
+       
         stage('Checking repository'){
             steps { 
                 sh "ls -la"
