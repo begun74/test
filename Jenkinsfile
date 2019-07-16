@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Checking repository'){
             steps { 
-                sh "ls -l"
+                sh "ls -la"
             }
         }
         stage('Packing project') {
