@@ -1,11 +1,7 @@
 pipeline { 
     agent any 
     stages {
-        stage('Clone repository') { 
-            steps { 
-                git url: 'git@github.com:begun74/test.git'
-            }
-        }
+       }
         stage('Checking repository'){
             steps { 
                 sh "ls -la"
