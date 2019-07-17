@@ -20,6 +20,8 @@ pipeline {
         }
         stage('Packing project') {
             steps {
+
+		sh "git branch master"
 		sh "git branch -D f_01"
 
                 sh '''
