@@ -10,7 +10,6 @@ pipeline {
             steps {
                 sh "ls -la"
 
-                sh "git checkout -b f_01"
             }
         }
         stage('Checking repository'){
