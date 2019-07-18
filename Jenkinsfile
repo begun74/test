@@ -18,9 +18,9 @@ pipeline {
 			*/
 		script {
 		  try {
-		      sh 'do your stuff'
+     			sh "git checkout -b f_01"
 		  } catch (Exception e) {
-		      sh 'Handle the exception!'
+		      sh "git branch -D f_01"
 		  }
 		}
 				
