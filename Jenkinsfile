@@ -8,10 +8,15 @@ pipeline {
         }
 	stage('Deploy') {
             steps {
-                sh "ls -la"
+	         sh "ls -la"
 
-		sh "git checkout -b f_01"
-            }
+		if (env.BRANCH_NAME == 'f_01') {
+			sh "git checkout master"
+			sh "git branch -D f_01"
+	        } else {
+			sh "git checkout -b f_01"
+        	}       
+           }
         }
         stage('Checking repository'){
             steps { 
@@ -20,9 +25,6 @@ pipeline {
         }
         stage('Packing project') {
             steps {
-
-		sh "git checkout master"
-		sh "git branch -D f_01"
 
                 sh '''
                 tar -zcvf /tmp/package.tar.gz  ./
