@@ -7,17 +7,16 @@ pipeline {
             }
         }
 	stage('Deploy') {
-		try {
+		steps {
 		        sh "ls -la "
 
-			sh "git checkout -b f_01"
-	        } 
-		catch(exc) {
-			echo env.BRANCH_NAME " Already exists"
-			/*
-			  sh "git checkout master"
-			  sh "git branch -D f_01"
-			*/	
+			//sh "git checkout -b f_01"
+			echo env.BRANCH_NAME 
+
+			/* sh "git checkout master"
+			sh "git branch -D f_01"
+			*/
+				
         	}       
         }
         stage('Checking repository'){
