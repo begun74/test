@@ -10,11 +10,15 @@ pipeline {
             steps {
 	         sh "ls -la "
 
-		if (env.BRANCH_NAME == 'f_01') {
-			sh "git checkout master"
-			sh "git branch -D f_01"
-	        } else {
+		try {
 			sh "git checkout -b f_01"
+	        } 
+		catch(exc) {
+			echo env.BRANCH_NAME " Already exists"
+			/*
+			  sh "git checkout master"
+			  sh "git branch -D f_01"
+			*/	
         	}       
            }
         }
