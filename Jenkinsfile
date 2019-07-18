@@ -16,6 +16,13 @@ pipeline {
 			/* sh "git checkout master"
 			sh "git branch -D f_01"
 			*/
+		script {
+		  try {
+		      sh 'do your stuff'
+		  } catch (Exception e) {
+		      sh 'Handle the exception!'
+		  }
+		}
 				
         	}       
         }
