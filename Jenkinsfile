@@ -5,34 +5,22 @@ pipeline {
           steps {
 	        sh "ls -la "
 
-                git url: 'git@github.com:begun74/test.git'
+                	//git branch: 'feature_01', url: 'git@github.com:begun74/test.git'
+			git  url: 'git@github.com:begun74/test.git'
 
+			sh "git checkout feature_01"
 			echo env.BRANCH_NAME 
 
-			script {
+			/*script {
 		  		try {
      				  sh "git checkout -b f_01"
 		  		} catch (Exception e) {
 		      		  sh "git branch -D f_01"
 		  		}
 			}
+			*/
 				
           }       
-        }
-        stage('Publish artifacts'){
-            steps { 
-                sh "ls -la"
-		  always {
-			archiveArtifacts artifacts: '**/*', onlyIfSuccessful: true
-		  }
-/*
-                sh '''
-                tar -zcvf /tmp/package.tar.gz  ./
-                '''
-                deleteDir()
-                sh "mv /tmp/package.tar.gz  ./"
-*/
-            }
         }
 
         stage('Work with files'){
@@ -40,12 +28,22 @@ pipeline {
                 sh "ls -la"
 
                 sh '''
-                tar -zcvf /tmp/package.tar.gz  ./
+                tar -zcvf /tmp/test.tar.gz  ./
                 '''
                 deleteDir()
-                sh "mv /tmp/package.tar.gz  ./"
+                sh "mv /tmp/test.tar.gz  ./"
             }
         }
+
+        stage('Save artifact'){
+            steps { 
+                sh "ls -la"
+		  always {
+			archiveArtifacts artifacts: '**/*', onlyIfSuccessful: true
+		  }
+            }
+        }
+
         stage('Packing test') {
             steps {
                 sh "ls -l"
