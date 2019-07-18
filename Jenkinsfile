@@ -8,7 +8,6 @@ pipeline {
                 	//git branch: 'feature_01', url: 'git@github.com:begun74/test.git'
 			git  url: 'git@github.com:begun74/test.git'
 
-			sh "git checkout feature_01"
 			echo env.BRANCH_NAME 
 
 			/*script {
