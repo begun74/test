@@ -8,9 +8,9 @@ pipeline {
         }
 	stage('Deploy') {
             steps {
-	         sh "ls -la "
-
 		try {
+		        sh "ls -la "
+
 			sh "git checkout -b f_01"
 	        } 
 		catch(exc) {
