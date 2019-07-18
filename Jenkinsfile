@@ -7,7 +7,6 @@ pipeline {
             }
         }
 	stage('Deploy') {
-            steps {
 		try {
 		        sh "ls -la "
 
@@ -20,7 +19,6 @@ pipeline {
 			  sh "git branch -D f_01"
 			*/	
         	}       
-           }
         }
         stage('Checking repository'){
             steps { 
