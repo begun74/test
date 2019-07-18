@@ -10,19 +10,15 @@ pipeline {
 		steps {
 		        sh "ls -la "
 
-			//sh "git checkout -b f_01"
 			echo env.BRANCH_NAME 
 
-			/* sh "git checkout master"
-			sh "git branch -D f_01"
-			*/
-		script {
-		  try {
-     			sh "git checkout -b f_01"
-		  } catch (Exception e) {
-		      sh "git branch -D f_01"
-		  }
-		}
+			script {
+		  		try {
+     				  sh "git checkout -b f_01"
+		  		} catch (Exception e) {
+		      		  sh "git branch -D f_01"
+		  		}
+			}
 				
         	}       
         }
