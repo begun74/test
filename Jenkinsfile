@@ -1,14 +1,11 @@
 pipeline { 
     agent any 
     stages {
-        stage('Clone repository') { 
-            steps { 
+        stage('Work with repo. Deploy') { 
+          steps {
+	        sh "ls -la "
+
                 git url: 'git@github.com:begun74/test.git'
-            }
-        }
-	stage('Deploy') {
-		steps {
-		        sh "ls -la "
 
 			echo env.BRANCH_NAME 
 
@@ -20,15 +17,27 @@ pipeline {
 		  		}
 			}
 				
-        	}       
+          }       
         }
-        stage('Checking repository'){
+        stage('Publish artifacts'){
             steps { 
                 sh "ls -la"
+		  always {
+			archiveArtifacts artifacts: '**/*', onlyIfSuccessful: true
+		  }
+/*
+                sh '''
+                tar -zcvf /tmp/package.tar.gz  ./
+                '''
+                deleteDir()
+                sh "mv /tmp/package.tar.gz  ./"
+*/
             }
         }
-        stage('Packing project') {
-            steps {
+
+        stage('Work with files'){
+            steps { 
+                sh "ls -la"
 
                 sh '''
                 tar -zcvf /tmp/package.tar.gz  ./
