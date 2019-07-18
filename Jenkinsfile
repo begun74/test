@@ -8,7 +8,7 @@ pipeline {
         }
 	stage('Deploy') {
             steps {
-	         sh "ls -la"
+	         sh "ls -la "
 
 		if (env.BRANCH_NAME == 'f_01') {
 			sh "git checkout master"
