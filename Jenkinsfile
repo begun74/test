@@ -1,6 +1,7 @@
 pipeline { 
     agent any 
     stages {
+<<<<<<< HEAD
         stage('Work with repo. Deploy') { 
           steps {
 	        sh "ls -la "
@@ -47,10 +48,32 @@ pipeline {
             steps {
                 sh "ls -l"
 	   }
+=======
+       
+        stage('Checking repository'){
+            steps { 
+                sh "ls -la"
+            }
+        }
+        stage('Packing project') {
+            steps {
+                sh '''
+                tar -zcvf /tmp/package.tar.gz  ./
+                '''
+                deleteDir()
+                sh "mv /tmp/package.tar.gz  ./"
+            }
+        }
+        stage('Packing test') {
+            steps {
+                sh "ls -l"
+            }
+>>>>>>> f_02
         }
     }
     post {
             success {
+<<<<<<< HEAD
                 slackSend (channel: '#jenkins_news',color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
             }
             failure {
@@ -58,3 +81,12 @@ pipeline {
             }
     }
 }
+=======
+                slackSend (channel: '#jenkins_news',color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")            
+            }            
+            failure {                
+                slackSend (channel: '#jenkins_news',color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")            
+            }        
+    }
+}
+>>>>>>> f_02
